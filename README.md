@@ -1,16 +1,22 @@
-# cloud_messaging
+# Cloud Messaging App
 
-A new Flutter project.
+A Flutter app that receives Firebase Cloud Messaging notifications and updates the UI based on payload data.
+Demonstrates FCM integration with foreground/background message handling and dynamic image loading from custom data.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- Receive FCM notifications in foreground, background, and terminated states
+- Request and display FCM device token for Firebase Console testing
+- Extract notification title and display in UI status card
+- Dynamically load and display images based on custom payload data
 
-A few resources to get you started if this is your first Flutter project:
+## How UI Changes on Message
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+When a message arrives, the UI updates automatically via `setState()`:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- **Status text**: Extracted from `message.notification?.title`
+- **Image path**: Built from `message.data['asset']` → `'assets/images/{asset}.jpeg'`
+- **Example**: Sending `asset='clouds'` displays `clouds.jpeg` from `assets/images/` folder
+
+```
+
