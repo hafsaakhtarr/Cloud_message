@@ -38,7 +38,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final FCMService _fcmService = FCMService();
   String statusText = 'Waiting for a cloud message';
-  String imagePath = 'assets/images/clouds.jpeg';
+  String imagePath = 'assets/images/clouds.png';
   String? fcmToken;
   bool isInitialized = false;
 
@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> {
           message.notification?.title ?? 'Payload received';
 
       // Extract image path from payload data
-      imagePath = 'assets/images/${message.data['asset'] ?? 'default'}.png';
+      imagePath = 'assets/images/${message.data['asset'] ?? 'pinkcloud'}.png';
 
       print('Message data: ${message.data}');
     });
